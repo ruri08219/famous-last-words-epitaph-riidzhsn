@@ -8,6 +8,8 @@ Standard library only.
 
 import os
 
+MAX_CHARS = 150
+
 ENTRY = ("Tell my wife I loved her. Tell my boss I quit. "
          "Tell the cat I never liked him.")
 
@@ -20,7 +22,8 @@ def main():
         f.write(ENTRY)
     with open(path, "r", encoding="utf-8") as f:
         assert f.read() == ENTRY
-    assert 1 <= len(ENTRY) <= 150
+    assert 1 <= len(ENTRY) <= MAX_CHARS
+    assert "\n" not in ENTRY and "\r" not in ENTRY  # exactly one line
 
 
 if __name__ == "__main__":
